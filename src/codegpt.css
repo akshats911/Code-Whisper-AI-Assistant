@@ -1,0 +1,231 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #161616;
+}
+
+pre,
+code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  padding: 16px;
+}
+
+h1#chat-title {
+  margin: 0;
+  font-weight: 500;
+  color: white;
+  font-size: 1.3em;
+}
+
+#config-details {
+  color:#ccc;
+  font-size: x-small;
+}
+
+#model-prefix {
+  color: #888;
+}
+
+#messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 16px;
+  word-break: break-word; /* break words if necessary */
+}
+
+.user-message,
+.assistant-message,
+.system-message,
+.extension-message {
+  margin-bottom: 8px;
+  padding: 8px;
+  word-wrap: break-word; /* break words if necessary */
+  border-radius: 5px;
+  max-width: 100%; /* limit the width to 100% of the container */
+  overflow-wrap: break-word; /* break long words if necessary */
+}
+
+#chat-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.control-btn {
+  font-size: smaller;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #1d1d1d;
+  color: rgb(195, 195, 195);
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.control-btn:hover {
+  background-color: #292929;
+  color:white;
+}
+
+.user-message {
+    background-color: rgb(87, 87, 87); 
+    color: white;
+}
+  
+.assistant-message {
+    background-color: #333;
+    color: white;
+}
+
+.system-message {
+  background-color: #332d45;
+  color: rgb(178, 120, 241);
+  margin-bottom: 20px !important;
+}
+
+.extension-message {
+  background-color: #332d45;
+  color: rgb(241, 120, 120);
+  margin-bottom: 20px !important;
+}
+
+#message-input {
+    width: 90%;
+    min-height: 36px;
+    max-height: 160px; /* limit the maximum height */
+    resize: none;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow-y: auto; /* allow scrolling when the content exceeds the maximum height */
+    white-space: pre-wrap; /* wrap the text */
+    word-wrap: break-word; /* break words if necessary */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+}
+
+#send-button {
+    width: 10%;
+    min-height: 36px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#send-button:hover {
+    background-color: #005999;
+}
+
+.chat-bar {
+    display: flex;
+    padding: 8px;
+}
+
+#chat-logo {
+  width: 20px;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+#logo-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+b {
+  font-weight: medium;
+}
+
+#status-bar {
+    font-size: 0.8em;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 10px;
+    background-color: #333;
+    border-top: 1px solid #444;
+    height: 20px;
+}
+
+#status-bar a,
+#status-bar button {
+    color: #fff;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+#status-bar button:hover {
+    text-decoration: none;
+}
+
+.white-text {
+  color: white;
+}
+
+.code-block-wrapper {
+  position: relative;
+  display: block;
+  margin-bottom: 1em;
+  background-color: #282c34;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 10px 0 0;
+  font-size: 12px;
+  padding: 5px 7px;
+  background-color: #353840;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#config-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+#settings-button {
+  background-color:black;
+  border: none;
+  margin-left: 5px;
+  color: white;
+  font-size:large;
+  cursor: pointer;
+}

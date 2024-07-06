@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWhisper</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="${paths.codegptCssPath}">
+    <link rel="stylesheet" href="${paths.highlightJsCssPath}">
+</head>
+
+<body>
+    <div id="chat-container">
+        <header id="chat-header">
+            <div id="logo-container">
+                <img id="chat-logo" src="${paths.iconPath}" alt="Logo">
+                <h1 id="chat-title">CodeWhisper</h1>
+            </div>
+            <div id="chat-control">
+                <button id="reset-button" class="control-btn">Reset</button>
+                <button id="export-button" class="control-btn">Export</button>
+                <button id="import-button" class="control-btn">Import</button>
+            </div>
+            <div id="config-container">
+                <p id="config-details">
+                    <span id="model-prefix">Model: </span><span id="model-name">${modelConfigDetails}</span>
+                </p>
+                <button id="settings-button" class="material-icons">settings</button>
+            </div>
+        </header>
+        <main id="messages"></main>
+        <div class="chat-bar">
+            <textarea id="message-input" spellcheck="true" oninput="autoResize(this)" placeholder="Type your question here..."></textarea>
+            <button id="send-button">Send</button>
+        </div>
+        <footer id="status-bar">
+            <span id="highlighted-code-status">${codeHighlightStatusCopy}</span>
+            <button id="show-code" style="display:none;">Show code</button>
+            <div style="display: flex; align-items: center;">
+                <label for="auto-save-checkbox">Auto-save Chats:</label>
+                <input type="checkbox" id="auto-save-checkbox" checked="${autoSaveEnabled ? 'checked' : ''}">
+            </div>
+        </footer>
+    </div>
+    <script src="${paths.highlightJsScriptPath}"></script>
+    <script src="${paths.codegptJsPath}"></script>
+</body>
+
+</html>
