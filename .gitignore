@@ -1,0 +1,8 @@
+dist/
+node_modules/
+.DS_Store
+*.vsix
+gpt-conversations/
+ignore/
+.env
+Dockerfile

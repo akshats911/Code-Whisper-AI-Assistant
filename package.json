@@ -1,0 +1,187 @@
+{
+  "name": "CodeWhisper",
+  "publisher": "akshats911",
+  "displayName": "CodeWhisper - (Update to CodeGPT) Coding Assistant (GPT/ChatGPT, Claude)",
+  "description": "CodeWhisper, an update to CodeGPT, is a coding and debugging assistant that supports GPT/ChatGPT (OpenAI). Supported models: [gpt4, gpt-3.5-turbo, claude-v1.3]. Import/export your conversation history. Bring up the assistant in a side pane by pressing windows+shift+i.",
+  "version": "0.3.3",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yagil/ChatIDE"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "anthropic",
+    "claude",
+    "chatgpt",
+    "gpt",
+    "gpt4",
+    "gpt3",
+    "openai",
+    "ai",
+    "agi",
+    "artificial-intelligence",
+    "natural-language-processing",
+    "nlp",
+    "language-model",
+    "coding-assistant",
+    "programming-help",
+    "debugging",
+    "questions",
+    "code-generation"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codegpt.start",
+        "title": "Start CodeGPT"
+      },
+      {
+        "command": "codegpt.openSettings",
+        "title": "Open CodeGPT Settings"
+      },
+      {
+        "command": "codegpt.updateOpenAiApiKey",
+        "title": "Update your OpenAI API Key for CodeGPT"
+      },
+      {
+        "command": "codegpt.updateAnthropicApiKey",
+        "title": "Update your Anthropic API Key for CodeGPT"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "cmd+shift+i",
+        "command": "codegpt.start",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "CodeGPT",
+      "properties": {
+        "codegpt.model": {
+          "order": 0,
+          "type": "string",
+          "default": "gpt-4o",
+          "enum": [
+            "gpt-4o",
+            "gpt-4-turbo",
+            "gpt-4",
+            "claude-3-opus-20240229",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "GPT 4o (OpenAI)",
+            "GPT 4 Turbo (OpenAI)",
+            "GPT 4 (OpenAI)",
+            "Claude 3 Opus (Anthropic)",
+            "Custom LLM Server (OpenAI Compatible)"
+          ],
+          "description": "Select the AI model. You must have your own API key to use a model.",
+          "scope": "window"
+        },
+        "codegpt.systemPrompt": {
+          "order": 1,
+          "type": "string",
+          "default": "You are a helpful programming assistant running inside VS Code. The assistant always generates accurate and succinct messages. The assistant doesn't repeat previous information, and doesn't launch into long explanations unless asked. Always provide code inside triple backticks.",
+          "markdownDescription": "The 'system' prompt provided to the model. Keep in mind that some models pay stronger attention to the system prompt than others. For models that don't have a dedciated affordance for system prompts, this will be prepended to the first user prompt.",
+          "scope": "window",
+          "editorType": "string",
+          "editorMultiline": true
+        },
+        "codegpt.maxLength": {
+          "order": 2,
+          "type": "integer",
+          "default": 1000,
+          "minimum": 1,
+          "description": "Set the maximum length for the generated text (aka max_tokens).",
+          "scope": "window"
+        },
+        "codegpt.temperature": {
+          "order": 3,
+          "type": "number",
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "description": "Set the temperature for controlling the randomness of the generated text.",
+          "scope": "window"
+        },
+        "codegpt.highlightedCodeAwareness": {
+          "order": 4,
+          "type": "boolean",
+          "default": false,
+          "description": "[Experimental] Automatically include highlighted code in the prompt.",
+          "scope": "window"
+        },
+        "codegpt.pressEnterToSend": {
+          "order": 5,
+          "type": "boolean",
+          "default": false,
+          "description": "When enabled, pressing enter will send the message in the input box. Shift + Enter will insert a new line. When this option is not selected, you must click the 'Send' button.",
+          "scope": "window"
+        },
+        "codegpt.customServerUrl": {
+          "order": 6,
+          "type": "string",
+          "description": "Custom OpenAI-compatible server URL (Example http://localhost:1234/v1). Note: '/chat/completions' will be appended to the URL.",
+          "scope": "window",
+          "editorType": "string"
+        },
+        "codegpt.autoSaveDirectory": {
+          "order": 0,
+          "type": "string",
+          "default": "~/.cache/codegpt/",
+          "description": "The directory where the conversation will be automatically saved. If empty, auto-save will be disabled.",
+          "scope": "window"
+         },
+         "codegpt.autoSaveEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "When enabled, the conversation will be automatically saved to the directory specified in 'codegpt.autoSaveDirectory'.",
+          "scope": "window"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/marked": "^4.0.8",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.17.1",
+    "dotenv": "^16.0.3",
+    "marked": "^4.3.0",
+    "openai": "^3.2.1"
+  }
+}
